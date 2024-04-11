@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Server } from './server.model';
 
 @Component({
   selector: 'app-section-5',
@@ -7,22 +8,8 @@ import { Component } from '@angular/core';
 })
 export class Section5Component {
   serverElements = [];
-  newServerName = '';
-  newServerContent = '';
 
-  onAddServer() {
-    this.serverElements.push({
-      type: 'server',
-      name: this.newServerName,
-      content: this.newServerContent,
-    });
-  }
-
-  onAddBlueprint() {
-    this.serverElements.push({
-      type: 'blueprint',
-      name: this.newServerName,
-      content: this.newServerContent,
-    });
+  onAddServer(server: Server) {
+    this.serverElements.push(server);
   }
 }
