@@ -1,19 +1,45 @@
-<hr>
+<hr />
 <div class="container">
   <h2>SECTION 5. COMPONENTS AND DATA BINDING DEEP DIVE</h2>
- <app-cockpit (onServerAdded)="onAddServer($event)"></app-cockpit>
-  <hr>
+  <app-cockpit (onServerAdded)="onAddServer($event)"></app-cockpit>
+  <hr />
   <div class="row">
     <div class="col-xs-12">
       <app-server-item
-        *ngFor="let element of serverElements" [server]="element">
-          <p>
-            <strong *ngIf="element.type === 'server'; else blueprint" style="color: red">{{ element.content }}</strong>
-            <ng-template #blueprint>
-              <em>{{ element.content }}</em>
-            </ng-template>
-          </p>
+        *ngFor="let element of serverElements"
+        [server]="element"
+      >
+        <p>
+          <strong
+            *ngIf="element.type === 'server'; else blueprint"
+            style="color: red"
+            >{{ element.content }}</strong
+          >; >
+          <ng-template #blueprint>
+            <em>{{ element.content }}</em>
+          </ng-template>
+        </p>
       </app-server-item>
+    </div>
+  </div>
+  <hr />
+  <div class="row">
+    <div class="col-xs-12">
+      <app-game-control
+        (onGameButtonsHandled)="handleGameButtons($event)"
+      ></app-game-control>
+      <app-odd
+        style="display: inline-block"
+        *ngFor="let odd of oddList"
+        [num]="odd"
+      ></app-odd>
+    </div>
+    <div class="col-xs-12">
+      <app-even
+        style="display: inline-block"
+        *ngFor="let even of evenList"
+        [num]="even"
+      ></app-even>
     </div>
   </div>
 </div>
