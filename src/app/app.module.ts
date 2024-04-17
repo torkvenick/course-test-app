@@ -9,6 +9,10 @@ import { ServerItemComponent } from './section-5/server-item/server-item.compone
 import { GameControlComponent } from './section-5/assignment/game-control/game-control.component';
 import { OddComponent } from './section-5/assignment/odd/odd.component';
 import { EvenComponent } from './section-5/assignment/even/even.component';
+import { Section7Component } from './section-7/section-7.component';
+import { BasicHighlightDirective } from './section-7/directives/basic-highlight.directive';
+import { BetterHighlightDirective } from './section-7/directives/better-highlight.directive';
+import { UnlessDirective } from './section-7/directives/unless.directive';
 
 @NgModule({
   declarations: [
@@ -18,13 +22,14 @@ import { EvenComponent } from './section-5/assignment/even/even.component';
     ServerItemComponent,
     GameControlComponent,
     OddComponent,
-    EvenComponent
+    EvenComponent,
+    Section7Component,
+    BasicHighlightDirective,
+    BetterHighlightDirective,
+    UnlessDirective,
   ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-  ],
+  imports: [BrowserModule, FormsModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
