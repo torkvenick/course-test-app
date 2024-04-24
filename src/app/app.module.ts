@@ -17,6 +17,10 @@ import { Section9Component } from './section-9/section-9.component';
 import { AccountComponent } from './section-9/account/account.component';
 import { NewAccountComponent } from './section-9/new-account/new-account.component';
 import { LoggingService } from './section-9/logging.service';
+import { AccountsService } from './section-9/accounts.service';
+import { UsersComponent } from './section-9/assignment/users/users.component';
+import { ActiveUsersComponent } from './section-9/assignment/active-users/active-users.component';
+import { InactiveUsersComponent } from './section-9/assignment/inactive-users/inactive-users.component';
 
 @NgModule({
   declarations: [
@@ -34,9 +38,12 @@ import { LoggingService } from './section-9/logging.service';
     Section9Component,
     AccountComponent,
     NewAccountComponent,
+    UsersComponent,
+    ActiveUsersComponent,
+    InactiveUsersComponent,
   ],
   imports: [BrowserModule, FormsModule],
-  providers: [LoggingService],
+  providers: [LoggingService, AccountsService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

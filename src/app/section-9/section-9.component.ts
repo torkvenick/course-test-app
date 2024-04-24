@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { Account, AccountsService } from './accounts.service';
 
 @Component({
   selector: 'app-section-9',
@@ -6,26 +7,6 @@ import { Component } from '@angular/core';
   styleUrl: './section-9.component.scss',
 })
 export class Section9Component {
-  accounts = [
-    {
-      name: 'Master Account',
-      status: 'active',
-    },
-    {
-      name: 'Testaccount',
-      status: 'inactive',
-    },
-    {
-      name: 'Hidden Account',
-      status: 'unknown',
-    },
-  ];
-
-  onAccountAdded(newAccount: { name: string; status: string }) {
-    this.accounts.push(newAccount);
-  }
-
-  onStatusChanged(updateInfo: { id: number; newStatus: string }) {
-    this.accounts[updateInfo.id].status = updateInfo.newStatus;
-  }
+  accountsService = inject(AccountsService);
+  accounts: Account[] = this.accountsService.pubAccounts;
 }

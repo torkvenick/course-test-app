@@ -1,5 +1,6 @@
-import { Component, EventEmitter, Output, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { LoggingService } from '../logging.service';
+import { Account, AccountsService } from '../accounts.service';
 
 @Component({
   selector: 'app-new-account',
@@ -7,14 +8,13 @@ import { LoggingService } from '../logging.service';
   styleUrl: './new-account.component.scss',
 })
 export class NewAccountComponent {
-  @Output() accountAdded = new EventEmitter<{ name: string; status: string }>();
-
   loggingService = inject(LoggingService);
+  accountsService = inject(AccountsService);
   onCreateAccount(accountName: string, accountStatus: string) {
-    this.accountAdded.emit({
+    const account: Account = {
       name: accountName,
       status: accountStatus,
-    });
-    this.loggingService.logStatusChange(accountStatus);
+    };
+    this.accountsService.addAccount(account);
   }
 }
