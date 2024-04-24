@@ -1,1 +1,8 @@
-<p>active-users works!</p>
+<div class="flex-between">
+  <div class="col-xs-4 flex-between border">
+    {{ user.name }} is
+    <button class="btn btn-success" (click)="changeStatus()">
+      {{ user.status }}
+    </button>
+  </div>
+</div>

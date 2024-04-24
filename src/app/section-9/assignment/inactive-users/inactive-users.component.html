@@ -1,1 +1,8 @@
-<p>inactive-users works!</p>
+<div class="row">
+  <div class="col-xs-4 flex-between border">
+    {{ user.name }} is
+    <button class="btn btn-danger" (click)="changeStatus()">
+      {{ user.status }}
+    </button>
+  </div>
+</div>

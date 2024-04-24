@@ -44,3 +44,14 @@
 .mt10 {
   margin-top: 10px;
 }
+
+.flex-between {
+  width: 300px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.flx-around {
+  display: flex;
+  justify-content: space-around;
+}

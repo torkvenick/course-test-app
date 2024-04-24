@@ -21,6 +21,7 @@ import { AccountsService } from './section-9/accounts.service';
 import { UsersComponent } from './section-9/assignment/users/users.component';
 import { ActiveUsersComponent } from './section-9/assignment/active-users/active-users.component';
 import { InactiveUsersComponent } from './section-9/assignment/inactive-users/inactive-users.component';
+import { CounterService } from './section-9/assignment/services/counter.service';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,7 @@ import { InactiveUsersComponent } from './section-9/assignment/inactive-users/in
     InactiveUsersComponent,
   ],
   imports: [BrowserModule, FormsModule],
-  providers: [LoggingService, AccountsService],
+  providers: [LoggingService, AccountsService, CounterService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
