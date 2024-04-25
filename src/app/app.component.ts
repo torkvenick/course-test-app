@@ -1,4 +1,5 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { GeneralService } from './general.service';
 
 @Component({
   selector: 'app-root',
@@ -6,7 +7,7 @@ import { Component, ViewEncapsulation } from '@angular/core';
   styleUrl: './app.component.scss',
   encapsulation: ViewEncapsulation.None,
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   serverName: string = '';
 
   servers = [
@@ -19,6 +20,14 @@ export class AppComponent {
       serverStatus: this.checkStatus(),
     },
   ];
+
+  page = 'next';
+
+  constructor(private gService: GeneralService) {}
+
+  ngOnInit(): void {
+    this.gService.pageUpdated.subscribe((page) => (this.page = page));
+  }
 
   createServer() {
     this.servers.push({
