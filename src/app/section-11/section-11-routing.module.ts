@@ -9,6 +9,8 @@ import { Section11Component } from './section-11.component';
 import { Home11Component } from './home/home-11.component';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { AuthGuard } from '../auth-guard.service';
+import { CanDeactivateGuard } from './servers/edit-server/can-deactivate-guard.service';
 
 const appRoutes: Routes = [
   {
@@ -24,9 +26,15 @@ const appRoutes: Routes = [
       {
         path: 'servers',
         component: Servers11Component,
+        // canActivate: [AuthGuard],
+        canActivateChild: [AuthGuard],
         children: [
           { path: ':id', component: Server11Component },
-          { path: ':id/edit', component: EditServer11Component },
+          {
+            path: ':id/edit',
+            component: EditServer11Component,
+            canDeactivate: [CanDeactivateGuard],
+          },
         ],
       },
       { path: '**', redirectTo: '', pathMatch: 'full' },

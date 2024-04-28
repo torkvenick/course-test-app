@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '../../auth.service';
 
 @Component({
   selector: 'app-home-11',
@@ -7,7 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./home-11.component.css'],
 })
 export class Home11Component implements OnInit {
-  constructor(private router: Router) {}
+  constructor(private router: Router, private authService: AuthService) {}
 
   ngOnInit() {}
 
@@ -17,5 +18,12 @@ export class Home11Component implements OnInit {
       queryParams: { allowEdit: true },
       fragment: 'loading',
     });
+  }
+
+  onLogin() {
+    this.authService.login();
+  }
+  onLogout() {
+    this.authService.loggedOut();
   }
 }

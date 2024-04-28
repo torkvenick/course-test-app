@@ -10,6 +10,9 @@ import { Servers11Service } from './servers/servers-11.service';
 import { Section11RoutingModule } from './section-11-routing.module';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { AuthService } from '../auth.service';
+import { AuthGuard } from '../auth-guard.service';
+import { CanDeactivateGuard } from './servers/edit-server/can-deactivate-guard.service';
 
 @NgModule({
   declarations: [
@@ -30,7 +33,7 @@ import { CommonModule } from '@angular/common';
     Server11Component,
     EditServer11Component,
   ],
-  providers: [Servers11Service],
+  providers: [Servers11Service, AuthService, AuthGuard, CanDeactivateGuard],
   imports: [FormsModule, CommonModule, Section11RoutingModule],
 })
 export class Section11Module {}

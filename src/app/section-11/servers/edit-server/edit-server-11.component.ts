@@ -1,21 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Servers11Service } from '../servers-11.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { CanCompDeactivate } from './can-deactivate-guard.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-edit-server-11',
   templateUrl: './edit-server-11.component.html',
   styleUrls: ['./edit-server-11.component.css'],
 })
-export class EditServer11Component implements OnInit {
+export class EditServer11Component implements OnInit, CanCompDeactivate {
   server: { id: number; name: string; status: string };
   serverName = '';
   serverStatus = '';
+  allowEdit = false;
+  changesSaved = false;
 
   constructor(
     private serversService: Servers11Service,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -26,6 +31,9 @@ export class EditServer11Component implements OnInit {
         this.serverStatus = this.server.status;
       }
     });
+    this.route.queryParams.subscribe((queryParams) => {
+      this.allowEdit = queryParams['allowEdit'] === 'true';
+    });
   }
 
   onUpdateServer() {
@@ -33,5 +41,27 @@ export class EditServer11Component implements OnInit {
       name: this.serverName,
       status: this.serverStatus,
     });
+    this.changesSaved = true;
+    this.router.navigate(['../'], { relativeTo: this.route });
+  }
+
+  canDeactivate(): Observable<boolean> | Promise<boolean> | boolean {
+    if (!this.allowEdit) {
+      console.log('one');
+      return true;
+    }
+    if (
+      (this.serverName !== this.server.name ||
+        this.serverStatus !== this.server.status) &&
+      !this.changesSaved
+    ) {
+      console.log('two');
+
+      return confirm('Are you sure you want to leave?');
+    } else {
+      console.log('three');
+
+      return true;
+    }
   }
 }
