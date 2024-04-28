@@ -1,0 +1,7 @@
+.flx-buttons-container {
+  flex-direction: row;
+  flex-wrap: wrap;
+  & > li {
+    margin: 5px;
+  }
+}

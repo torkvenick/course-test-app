@@ -1,0 +1,42 @@
+<div class="container flex-container">
+  <div class="col-md-6 brd" style="margin-bottom: 15px">
+    <div>
+      <span style="margin-right: 10px">type server name</span>
+      <input [(ngModel)]="serverName" type="text" />
+      <button style="margin-right: 10px" (click)="createServer()">
+        create server
+      </button>
+      <button (click)="changeStatus()">change status</button>
+    </div>
+    <div style="margin-top: 15px">
+      <ul>
+        @for (server of servers; track $index) {
+        <li
+          style="margin-bottom: 10px"
+          [ngStyle]="{ backgroundColor: setBg(server.serverStatus) }"
+          [ngClass]="{ smallLetters: server.serverStatus === 'online' }"
+        >
+          {{ server.name }} is {{ server.serverStatus }}
+          <button (click)="deleteServer(server.name)">delete</button>
+        </li>
+        }
+      </ul>
+    </div>
+  </div>
+  <div class="col-md-8 brd">
+    <button (click)="showDetails()">Show details</button>
+    @if(detailShowed) {
+    <span style="margin-left: 10px">Secret password = tuna</span>
+    }
+    <div class="div" style="margin-top: 10px">
+      @for (block of blocks; track $index) {
+      <span
+        class="block"
+        [ngStyle]="{ backgroundColor: setBgd(block) }"
+        [ngClass]="{ white: $index >= 4 }"
+        >{{ block }}</span
+      >
+      }
+    </div>
+  </div>
+</div>

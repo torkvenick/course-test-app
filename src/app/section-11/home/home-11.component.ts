@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home-11',
@@ -6,7 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home-11.component.css'],
 })
 export class Home11Component implements OnInit {
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit() {}
+
+  onLoadServer(id: number) {
+    // this.router.navigate(['/servers']);
+    this.router.navigate(['/servers', id, 'edit'], {
+      queryParams: { allowEdit: true },
+      fragment: 'loading',
+    });
+  }
 }

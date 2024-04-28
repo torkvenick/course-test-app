@@ -7,15 +7,9 @@ import { Servers11Component } from './servers/servers-11.component';
 import { User11Component } from './users/user/user-11.component';
 import { Users11Component } from './users/users-11.component';
 import { Servers11Service } from './servers/servers-11.service';
+import { Section11RoutingModule } from './section-11-routing.module';
 import { FormsModule } from '@angular/forms';
-import { RouterModule, Routes } from '@angular/router';
-import { BrowserModule } from '@angular/platform-browser';
-
-const appRoutes: Routes = [
-  { path: '', component: Home11Component },
-  { path: 'users', component: Users11Component },
-  { path: 'servers', component: Servers11Component },
-];
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -37,6 +31,6 @@ const appRoutes: Routes = [
     EditServer11Component,
   ],
   providers: [Servers11Service],
-  imports: [BrowserModule, FormsModule, RouterModule.forRoot(appRoutes)],
+  imports: [FormsModule, CommonModule, Section11RoutingModule],
 })
 export class Section11Module {}

@@ -1,18 +1,7 @@
 <nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div>
-      <ul class="list-group">
-        <li class="list-group-item">
-          <a (click)="onSelect('first')" style="cursor: pointer"
-            >First 10 components</a
-          >
-        </li>
-        <li class="list-group-item">
-          <a (click)="onSelect('next')" style="cursor: pointer"
-            >Next components</a
-          >
-        </li>
-      </ul>
-    </div>
-  </div>
+  <ul class="list-group flx-buttons-container">
+    <li *ngFor="let btn of buttons" class="list-group-item">
+      <a (click)="onSelect(btn)" style="cursor: pointer">{{ btn.name }}</a>
+    </li>
+  </ul>
 </nav>

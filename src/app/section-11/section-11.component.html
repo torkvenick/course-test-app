@@ -2,14 +2,14 @@
   <div class="row">
     <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
       <ul class="nav nav-tabs">
-        <li class="mr10" role="presentation">
-          <a routerLink="/" class="nav-link" routerLinkActive="active">Home</a>
+        <li class="mr10" role="presentation" routerLinkActive="active">
+          <a routerLink="/home" class="nav-link">Home</a>
         </li>
-        <li class="mr10 nav-link" role="presentation" routerLinkActive="active">
-          <a routerLink="/servers">Servers</a>
+        <li class="mr10" role="presentation" routerLinkActive="active">
+          <a routerLink="/servers" class="nav-link">Servers</a>
         </li>
-        <li class="mr10 nav-link" role="presentation">
-          <a [routerLink]="['/users']" routerLinkActive="active">Users</a>
+        <li class="mr10" role="presentation" routerLinkActive="active">
+          <a routerLink="/users" class="nav-link">Users</a>
         </li>
       </ul>
     </div>

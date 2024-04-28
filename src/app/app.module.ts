@@ -24,6 +24,8 @@ import { InactiveUsersComponent } from './section-9/assignment/inactive-users/in
 import { CounterService } from './section-9/assignment/services/counter.service';
 import { HeaderComponent } from './header/header.component';
 import { GeneralService } from './general.service';
+import { Section2Component } from './section-2/section-2.component';
+import { AppRoutingModule } from './app-routing.module';
 import { Section11Module } from './section-11/section-11.module';
 
 @NgModule({
@@ -46,8 +48,9 @@ import { Section11Module } from './section-11/section-11.module';
     ActiveUsersComponent,
     InactiveUsersComponent,
     HeaderComponent,
+    Section2Component,
   ],
-  imports: [BrowserModule, FormsModule, Section11Module],
+  imports: [BrowserModule, FormsModule, AppRoutingModule, Section11Module],
   providers: [LoggingService, AccountsService, CounterService, GeneralService],
   bootstrap: [AppComponent],
 })
