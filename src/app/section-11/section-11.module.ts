@@ -13,6 +13,8 @@ import { CommonModule } from '@angular/common';
 import { AuthService } from '../auth.service';
 import { AuthGuard } from '../auth-guard.service';
 import { CanDeactivateGuard } from './servers/edit-server/can-deactivate-guard.service';
+import { ErrorPageComponent } from './error-page/error-page.component';
+import { ServerResolver } from './servers/server/server-resolver.service';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,7 @@ import { CanDeactivateGuard } from './servers/edit-server/can-deactivate-guard.s
     Servers11Component,
     Server11Component,
     EditServer11Component,
+    ErrorPageComponent,
   ],
   exports: [
     Section11Component,
@@ -33,7 +36,13 @@ import { CanDeactivateGuard } from './servers/edit-server/can-deactivate-guard.s
     Server11Component,
     EditServer11Component,
   ],
-  providers: [Servers11Service, AuthService, AuthGuard, CanDeactivateGuard],
+  providers: [
+    Servers11Service,
+    AuthService,
+    AuthGuard,
+    CanDeactivateGuard,
+    ServerResolver,
+  ],
   imports: [FormsModule, CommonModule, Section11RoutingModule],
 })
 export class Section11Module {}

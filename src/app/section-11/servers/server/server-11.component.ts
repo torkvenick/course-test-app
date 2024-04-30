@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Servers11Service } from '../servers-11.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Data, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -19,9 +19,12 @@ export class Server11Component implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.route.params.subscribe((params) => {
-      this.server = this.serversService.getServer(+params['id']);
+    this.route.data.subscribe((data: Data) => {
+      this.server = data['server'];
     });
+    // this.route.params.subscribe((params) => {
+    //   this.server = this.serversService.getServer(+params['id']);
+    // });
     this.route.queryParams.subscribe((queryParams) => {
       this.allowEdit = queryParams['allowEdit'] === 'true';
     });

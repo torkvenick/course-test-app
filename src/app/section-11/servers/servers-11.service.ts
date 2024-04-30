@@ -1,3 +1,9 @@
+export interface Serv {
+  id: number;
+  name: string;
+  status: string;
+}
+
 export class Servers11Service {
   private servers = [
     {

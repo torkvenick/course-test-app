@@ -11,6 +11,8 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { AuthGuard } from '../auth-guard.service';
 import { CanDeactivateGuard } from './servers/edit-server/can-deactivate-guard.service';
+import { ErrorPageComponent } from './error-page/error-page.component';
+import { ServerResolver } from './servers/server/server-resolver.service';
 
 const appRoutes: Routes = [
   {
@@ -29,7 +31,11 @@ const appRoutes: Routes = [
         // canActivate: [AuthGuard],
         canActivateChild: [AuthGuard],
         children: [
-          { path: ':id', component: Server11Component },
+          {
+            path: ':id',
+            component: Server11Component,
+            resolve: { server: ServerResolver },
+          },
           {
             path: ':id/edit',
             component: EditServer11Component,
@@ -37,13 +43,22 @@ const appRoutes: Routes = [
           },
         ],
       },
-      { path: '**', redirectTo: '', pathMatch: 'full' },
+      {
+        path: 'not-found',
+        component: ErrorPageComponent,
+        data: { message: 'Page not found!' },
+      },
+      { path: '**', redirectTo: 'not-found' },
     ],
   },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(appRoutes), CommonModule, FormsModule],
+  imports: [
+    RouterModule.forRoot(appRoutes, { useHash: true }),
+    CommonModule,
+    FormsModule,
+  ],
   exports: [RouterModule],
 })
 export class Section11RoutingModule {}

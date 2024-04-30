@@ -47,7 +47,6 @@ export class EditServer11Component implements OnInit, CanCompDeactivate {
 
   canDeactivate(): Observable<boolean> | Promise<boolean> | boolean {
     if (!this.allowEdit) {
-      console.log('one');
       return true;
     }
     if (
@@ -55,12 +54,8 @@ export class EditServer11Component implements OnInit, CanCompDeactivate {
         this.serverStatus !== this.server.status) &&
       !this.changesSaved
     ) {
-      console.log('two');
-
       return confirm('Are you sure you want to leave?');
     } else {
-      console.log('three');
-
       return true;
     }
   }
